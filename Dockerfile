@@ -1,5 +1,4 @@
-FROM centos:7 
-MAINTAINER MIRhosting <dev@mirhosting.com> 
+FROM babim/centos7base
 
 ENV container docker 
 
