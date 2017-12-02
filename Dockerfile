@@ -1,4 +1,7 @@
-FROM babim/centos7base
+FROM centos:7
+# Maintainer
+# ----------
+MAINTAINER babim <babim@matmagoc.com>
 
 ENV container docker 
 
