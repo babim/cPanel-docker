@@ -29,7 +29,7 @@ COPY assets/cpanel.config /root/cpanel_profile/cpanel.config
 
 RUN rm -f /etc/sysconfig/iptables
 RUN wget -O /usr/local/src/latest.sh http://httpupdate.cpanel.net/latest
-RUN chmod +x /usr/local/src/latest.sh
+RUN chmod +x /usr/local/src/latest.sh && touch /etc/fstab
 RUN /usr/local/src/latest.sh --target /usr/local/src/cpanel/ --noexec
 RUN sed -i 's/check_hostname();/# check_hostname();/g' /usr/local/src/cpanel/install
 RUN cd /usr/local/src/cpanel/ && ./bootstrap --force
