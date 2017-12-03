@@ -3,9 +3,18 @@ FROM centos:7
 # ----------
 MAINTAINER babim <babim@matmagoc.com>
 
-ENV container docker 
+RUN rm -f /etc/motd && \
+    echo "---" > /etc/motd && \
+    echo "Support by Duc Anh Babim. Contact: babim@matmagoc.com" >> /etc/motd && \
+    echo "---" >> /etc/motd && \
+    touch "/(C) Babim"
 
-RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs openssh-server wget dbus
+ENV container docker
+
+ENV LC_ALL en_US.UTF-8
+ENV TZ Asia/Ho_Chi_Minh
+
+RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs openssh-server wget dbus nano iputils locales
 RUN yum -y update; yum clean all;
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
