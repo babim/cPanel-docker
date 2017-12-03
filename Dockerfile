@@ -17,7 +17,7 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 CMD ["/usr/sbin/init"]
 
-RUN yum -y swap -- remove systemd-container systemd-container-libs -- install systemd systemd-libs
+RUN yum -y swap -- remove systemd-container systemd-container-libs -- install systemd systemd-libs dbus
 
 RUN yum -y update
 RUN yum -y install wget
