@@ -15,7 +15,7 @@ ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Ho_Chi_Minh
 
 RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
-RUN yum -y install openssh-server wget nano iputils locales systemd systemd-libs dbus
+RUN yum -y install openssh-server wget nano iputils htop telnet locales systemd systemd-libs dbus
 RUN yum -y update; yum clean all;
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
