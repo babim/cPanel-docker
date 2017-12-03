@@ -28,6 +28,14 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
+RUN mkdir -p /etc/selinux/targeted/contexts/
+RUN echo '<busconfig><selinux></selinux></busconfig>' > /etc/selinux/targeted/contexts/dbus_contexts
+
+ADD dbus.service /etc/systemd/system/dbus.service
+RUN systemctl enable dbus.service
+
+VOLUME ["/sys/fs/cgroup"]
+
 COPY assets/wwwacct.conf /etc/wwwacct.conf
 RUN mkdir /root/cpanel_profile/
 COPY assets/cpanel.config /root/cpanel_profile/cpanel.config
