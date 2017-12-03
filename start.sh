@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export LC_ALL="en_US.utf8"
+export TZ=Asia/Ho_Chi_Minh
 iptables --flush
 /scripts/restartsrv_cpsrvd
 systemctl restart mysql
